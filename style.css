@@ -98,6 +98,7 @@ nav ul li a:hover::after{
 .tab-titles{
     display: flex;
     margin: 20px 0 40px;
+    transition: 2s;
 }
 .tab-links{
     margin-right: 50px;
@@ -398,3 +399,35 @@ nav .fas{
         margin-top: -20px;
         display: block;
     }    
+
+==========================CSS for about menu======================
+/* These styles will ONLY apply to elements within a body that has the class 'about-page' */
+.about-page body {
+  background-color: #f0f8ff; /* Light blue background for the about page only */
+}
+
+.about-page .backToHome {
+  color: #ff004f;
+  text-decoration: underline;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s;
+}
+.about-page .backToHome:hover {
+  color: #d4003a;
+  transform: scale(1.1);
+
+/* To target the main content div on the about page */
+#about-section {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.about-page h1 {
+  background-color: navy;
+  color: #ff004f;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
