@@ -1,13 +1,62 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/6251c87c47.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="index.html#header">Home</a></li>
+                    <li><a href="#about">About</a></li> <li><a href="index.html#services">My services</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+        </div>
+    </div>
 
-    <div id="about-section">
-        <h1><button class="btn2"><a href="index.html" class="BackToHome">Back</a></button></h1>
-        
-        <h2>About Me</h2>
-     
-</body>
+    <div id="about-page-section" class="about-page-main">
+        <div class="container">
+            <h1 class="sub-title">More About Me</h1>
+            
+            <div class="about-page-content-container">
+                <div class="about-page-img">
+                    <img src="images/user.png" alt="Profile Picture" style="width: 100%; border-radius: 15px;">
+                </div>
+                
+                <div class="about-page-text">
+                    <h2>IT Professional and Full-Stack Aspirant</h2>
+                    <p>Building on 3 years of hands-on experience in IT Support, I've transitioned my focus to full-stack development. My technical background in troubleshooting and backend operations provides a unique perspective in creating robust, stable, and user-friendly web applications.</p>
+                    
+                    <p>My foundational skills in Python, Java, and Networking, combined with intensive training in the **MERN stack** (MongoDB, Express.js, React, Node.js) from StackTrek, have equipped me to handle the entire development lifecycle, from database design to front-end implementation.</p>
+
+                    <h3>Key Areas of Expertise:</h3>
+                    <ul>
+                        <li>**Backend Reliability**: Deep experience in IT troubleshooting, Freshdesk ticket management, and ensuring transaction integrity in production environments.</li>
+                        <li>**Development**: Proficient in JavaScript, PHP, and modern web development practices (HTML5, CSS3).</li>
+                        <li>**System Administration**: Familiar with Active Directory, Windows OS environments, and remote support tools.</li>
+                    </ul>
+
+                    <a href="images/Updated_Resume_Cionelo.pdf" download class="btn btn2">Download My Resume <i class="fa-solid fa-download"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>Copyright © Jeoben Made with <i class="fa-solid fa-star"></i>Jeoben Company</p>
+    </div>
+
+    <script src="MyScriptForMenu.js"></script> </body>
 </html>

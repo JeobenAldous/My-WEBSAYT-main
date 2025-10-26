@@ -121,9 +121,22 @@ nav ul li a:hover::after{
     width: 50%;
 
 }
-.tab-contents ul li{
-    list-style: none;
-    margin: 10px 0;
+/* ================================================= */
+/* --- Tab Content Reveal Animation CSS --- */
+/* ================================================= */
+
+/* Hide all list items in tab contents initially */
+.tab-contents ul li {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+    /* Add a smooth transition for the reveal */
+    transition: opacity 0.2s ease-out, transform 0.5s ease-out; 
+}
+
+/* The class added by JavaScript to reveal the item */
+.tab-contents ul li.reveal-item {
+    opacity: 1;
+    transform: translateY(0); /* Move to final position */
 }
 .tab-contents ul li span{
     color: #b54769;
@@ -135,6 +148,8 @@ nav ul li a:hover::after{
 .tab-contents.active-tab{
     display: block;
 }
+
+
 /*--------------------------------services-------------*/
 #services{
     padding: 30px 0;
@@ -302,6 +317,17 @@ nav ul li a:hover::after{
 .contact-right form{
     width: 100%;
 }
+/* --- New CSS for Contact Form Submit Button Hover Effect --- */
+
+/* Target the specific submit button inside the form */
+.contact-right form button[type="submit"]:hover {
+    /* Existing buttons generally change background to the theme color (#ff004f), 
+       let's make this one stand out by making it darker/lighter or changing the color. */
+    background: #e60046; /* A slightly darker red/pink */
+    transform: translateY(-2px); /* Lifts the button slightly */
+    box-shadow: 0 5px 15px rgba(255, 0, 79, 0.4); /* Adds a glowing effect */
+    transition: all 0.3s ease; /* Ensures a smooth transition */
+}
 form input, form textarea{
     width: 100%;
     border: 0;
@@ -395,39 +421,100 @@ nav .fas{
     }
     }
     #msg{
-        color: #61b752;
-        margin-top: -20px;
-        display: block;
-    }    
+    color: #61b752; /* A shade of green for success */
+    margin-top: 20px; /* Space it below the button */
+    display: block;
+    text-align: center; /* Center the message */
+    font-size: 1.2em;
+    font-weight: bold;
+    }
 
 ==========================CSS for about menu======================
 /* These styles will ONLY apply to elements within a body that has the class 'about-page' */
-.about-page body {
-  background-color: #f0f8ff; /* Light blue background for the about page only */
+/* ==================================== */
+/* -- CSS for PageForabout.html only -- */
+/* ==================================== */
+
+/* Ensures the main content area for the dedicated About page is centered */
+.about-page-main {
+    padding: 100px 10%; /* Extra padding for spacing, especially below the header */
+    min-height: 80vh; /* Ensures the content takes up most of the viewport height */
 }
 
-.about-page .backToHome {
-  color: #ff004f;
-  text-decoration: underline;
-  font-weight: bold;
-  transition: color 0.3s, transform 0.3s;
+/* Specific styling for the main content section's title */
+.about-page-main .sub-title {
+    text-align: center;
+    margin-bottom: 50px;
+    /* Uses existing sub-title style but forces center alignment */
 }
-.about-page .backToHome:hover {
-  color: #d4003a;
-  transform: scale(1.1);
 
-/* To target the main content div on the about page */
-#about-section {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+/* Adjustments for the main content container on the dedicated page */
+.about-page-content-container {
+    display: flex;
+    flex-direction: column; /* Stacks image and text vertically by default */
+    align-items: center;
+    gap: 40px; /* Space between elements */
 }
-.about-page h1 {
-  background-color: navy;
-  color: #ff004f;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s;
+
+/* Image styling for the dedicated About page */
+.about-page-img {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow */
+}
+
+/* Text content styling for the dedicated About page */
+.about-page-text {
+    max-width: 800px;
+    line-height: 1.6;
+    color: #ababab; /* Uses existing text color */
+}
+
+/* Responsive adjustment for larger screens: place image and text side-by-side */
+@media only screen and (min-width: 768px) {
+    .about-page-content-container {
+        flex-direction: row; /* Horizontal layout on wider screens */
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .about-page-img {
+        flex-basis: 40%; /* Gives the image column more space */
+    }
+    .about-page-text {
+        flex-basis: 55%; /* Gives the text column more space */
+    }
+}
+
+
+/* ================================================= */
+/* --- UNIVERSAL BUTTON HOVER FIX (Forced) --- */
+/* ================================================= */
+
+/* 1. Ensure all buttons have a smooth transition on all properties */
+.btn, 
+.btn.btn2, 
+.contact-right form button[type="submit"] {
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* 2. Apply the consistent lift and shadow effect on ALL button hover states */
+.btn:hover, 
+.btn.btn2:hover,
+.contact-right form button[type="submit"]:hover {
+    /* Lifts the button up 5 pixels */
+    transform: translateY(-5px) !important; 
+    
+    /* Adds a glowing shadow in your theme color */
+    box-shadow: 0 10px 20px rgba(255, 0, 79, 0.6) !important;
+}
+
+/* 3. Re-affirm the color change for SOLID buttons */
+.btn.btn2:hover,
+.contact-right form button[type="submit"]:hover {
+    background: #e60046 !important;
+}
+
+/* 4. Re-affirm the color change for the OUTLINED 'See more' button */
+.btn:hover {
+    background: #ff004f !important;
 }

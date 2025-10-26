@@ -3,11 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal portfolio Website</title>
+    <title>My Portfolio - Projects</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/6251c87c47.js" crossorigin="anonymous"></script>
 </head>
 <body>
     
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="index.html#header">Home</a></li>
+                    <li><a href="PageForabout.html">About</a></li>
+                    <li><a href="index.html#services">My services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li> <li><a href="index.html#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+        </div>
+    </div>
+
+    <div id="portfolio-page-section" class="secondary-page-main">
+        <div class="container">
+            <h1 class="sub-title">My Projects & OJT</h1>
+            <div class="work-list">
+                <div class="work">
+                   <img src="images/ojt-1.png">
+                   <div class="layer">
+                    <h3>JavaScript Problem-Solving & Algorithms</h3>
+                    <p>During my intensive full-stack training at StackTrek, I honed my analytical and programming skills through a series of rigorous JavaScript coding challenges. These exercises required me to apply data structures and algorithms to solve complex problems, strengthening my debugging abilities and preparing me for real-world development scenarios.</p>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                   </div>
+                </div>
+                <div class="work">
+                   <img src="images/ojt-2.png">
+                   <div class="layer">
+                    <h3>Full-Stack Training & Agile Kickoff</h3>
+                    <p>My 400-hour, on-the-job training at StackTrek began with a strategic planning session that outlined the intensive, project-based curriculum. This kickoff established the agile workflow we would follow and immediately immersed us in the core principles of modern web development.</p>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                   </div>
+                </div>
+                <div class="work">
+                   <img src="images/ojt-3.png">
+                   <div class="layer">
+                    <h3>Web Developing Practices</h3>
+                    <p>During Week 3 of the StackTrek training, students will transition from the foundational JavaScript instruction to a major practical application: the development of a personal website portfolio. This project serves as a critical assignment to solidify and advance students' skills in creating fully functional and feature-complete professional websites.</p>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                  </div>
+                </div>
+                </div>
+            <a href="#" class="btn">See All Projects</a>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>Copyright © Jeoben Made with <i class="fa-solid fa-star"></i>Jeoben Company</p>
+    </div>
+
+    <script src="MyScriptForMenu.js"></script>
 </body>
 </html>
