@@ -40,11 +40,3 @@ function opentab(tabname) {
 
 // features for page about
 
-let aboutSubtitle = document.getElementsByClassName("about-subtitle")
-let aboutContents = document.getElementsByClassName("about-contents")
-
-function OpenAbout(tabname) {
-    if aboutSubtitle of aboutSubtitle {
-        aboutSubtitle.classList.remove("active-subtitle");
-    }
-}
