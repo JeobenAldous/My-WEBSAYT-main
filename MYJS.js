@@ -1,42 +1,97 @@
-let tablinks = document.getElementsByClassName("tab-links")
-let tabcontents = document.getElementsByClassName("tab-contents")
-
-function opentab(tabname) {
-    // 1. Remove active classes from tab links and tab contents (standard logic)
-    for (tablink of tablinks) {
-        tablink.classList.remove("active-link");
-    }
-    for (tabcontent of tabcontents) {
-        tabcontent.classList.remove("active-tab");
+function myFunction(el) {
+    // This is the function for the old toggle button interaction (less details / more details)
+    const buttonParent = el.closest('h1');
+    
+    if (!buttonParent) {
+        console.error("Error: Could not find the parent <h1> for the button.");
+        return;
     }
 
-    // 2. Set the newly clicked tab and content as active
-    event.currentTarget.classList.add("active-link");
-    let targetTab = document.getElementById(tabname);
-    targetTab.classList.add("active-tab");
+    const content = buttonParent.nextElementSibling;
+    
+    if (!content || !content.classList.contains('toggle-content')) {
+        console.error("Error: The next sibling is not the '.toggle-content' div. Check your HTML structure.");
+        return;
+    }
 
-    // --- New Sequential Animation Logic ---
+    if (!el.dataset.originalText) {
+        el.dataset.originalText = el.innerHTML;
+    }
 
-    // 3. Reset: Remove the 'reveal-item' class from ALL list items first
-    document.querySelectorAll('.tab-contents ul li').forEach(li => {
-        li.classList.remove('reveal-item');
-    });
+    content.classList.toggle('visible');
 
-    // 4. Select the list items in the currently active tab
-    let listItems = targetTab.querySelectorAll('ul li');
+    if (content.classList.contains('visible')) {
+        el.innerHTML = "Less Details";
+    } else {
+        el.innerHTML = el.dataset.originalText;
+    }
+}
 
-    // 5. Loop through items and apply the reveal class with a 1-second delay (1000ms)
-    listItems.forEach((item, index) => {
-        // Calculate the delay: 0s, 1s, 2s, 3s, etc.
-        let delay = index * 350;
+// =================================================
+// --- UPDATED FUNCTION FOR SERVICE FILTERING ---
+// =================================================
 
-        setTimeout(() => {
-            item.classList.add('reveal-item');
-        }, delay);
+/**
+=
+ * @param {string} category - The data-category value to filter by ('all', 'web', 'backend', etc.).
+ * @param {HTMLElement} clickedButton - The button element that was clicked.
+ */
+function selectServiceCategory(category, clickedButton) {
+    const boxes = document.querySelectorAll('.service-item-box');
+    const buttons = document.querySelectorAll('.filter-btn');
+
+    // 1. Update the active button state visually
+    buttons.forEach(btn => btn.classList.remove('active-filter'));
+    clickedButton.classList.add('active-filter');
+
+    // 2. Loop through service boxes and toggle visibility
+    boxes.forEach(box => {
+        const boxCategory = box.getAttribute('data-category');
+        
+        if (category === 'all' || boxCategory === category) {
+            // SHOW the box: remove 'hidden' class
+            box.classList.remove('hidden');
+        } else {
+            // HIDE the box: add 'hidden' class
+            box.classList.add('hidden');
+        }
     });
 }
 
 
+// =================================================
+// --- FUNCTION FOR FALLING TEXT EFFECT ---
+// =================================================
 
-// features for page about
+function animateText(elementId) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
 
+    const text = element.textContent;
+    let newHTML = '';
+    let delay = 0;
+    
+    for (const char of text) {
+        if (char === ' ') {
+            newHTML += '<span class="space">&nbsp;</span>';
+        } else {
+            newHTML += `<span style="animation-delay: ${delay}s;">${char}</span>`;
+        }
+        delay += 0.08;
+    }
+
+    element.innerHTML = newHTML;
+}
+
+// Run functions when the window loads
+window.onload = function() {
+    // Run the falling text animation
+    animateText('title-to-animate');
+    
+    // Set the initial filter state (showing all services)
+    const initialButton = document.querySelector('.filter-btn.active-filter');
+    if (initialButton) {
+        // Use the new function name
+        selectServiceCategory('all', initialButton); 
+    }
+}

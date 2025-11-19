@@ -125,7 +125,8 @@ nav ul li a:hover::after{
 .col-about-2{
     flex-basis: 60%;
 }
-.about-subtitle{
+.about-subtitle .btn{
+    background-color: #e60046;
     font-size: 60px;
     font-weight: 600;
     color: #fff;
@@ -156,6 +157,37 @@ nav ul li a:hover::after{
     width: 50%;
 
 }
+
+/* --- About Page Toggle Content CSS --- */
+
+
+/* Ensures the toggle content is hidden by default and transitions smoothly */
+.toggle-content {
+max-height: 0;
+overflow: hidden;         
+opacity: 0;
+/* Added margin-top to separate content from button when shown */
+transition: max-height 0.7s ease-in-out, opacity 0.5s ease, margin-top 0.5s ease;
+margin-top: 0; 
+}         
+
+/* State when content is visible */
+.toggle-content.visible {
+/* Use a large value for max-height to ensure all content fits */
+max-height: 1000px; 
+opacity: 1;
+margin-top: 20px; /* Add spacing when open */
+}
+
+/* Basic container styling for reference */
+.col-about-2 {
+padding-left: 20px;
+}
+
+/* Ensure the button looks clickable */
+.btn2 {
+cursor: pointer;
+}        
 /* ================================================= */
 /* --- Tab Content Reveal Animation CSS --- */
 /* ================================================= */
@@ -380,13 +412,19 @@ form btn2{
     margin-top: 20px;
     cursor: pointer;
 }
-.copyright{
+.copyright {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    background: #262626; 
+    padding: 10px 0;
     text-align: center;
-    padding: 25px 0;
-    background: #262626;
-    font-weight: 300;
-    margin-top: 20px;
+    z-index: 1000;
+    color: #ccc; /* Ensures text is visible on the dark background */
+}
+.copyright p {
+    margin: 0; /* Remove default paragraph margin */
 }
 .copyright i{
     color: #ff004f;
@@ -501,7 +539,7 @@ nav .fas{
 /* Text content styling for the dedicated About page */
 .about-page-hero-text {
             /* This property centers the text inside the div */
-            text-align: center; 
+            
             padding: 50px 0; /* Add some vertical padding for spacing */
         }
         .about-page-hero h1 {
@@ -593,3 +631,170 @@ nav .fas{
 
 
 
+/* ================================================= */
+/* --- END OF UNIVERSAL BUTTON HOVER FIX --- */     
+/* ================================================= */
+
+/* ================================================= */
+
+
+
+/* --- CSS for PageForMyServices.html only --- */
+
+/* --- FIX: Add padding to the body to create space above the fixed footer --- */
+body {
+    padding-bottom: 65px; 
+}
+
+        
+        /* --- STYLES FOR SERVICE FILTERS --- */
+        /* ================================================= */
+.service-filters-container {
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.filter-btn {
+    background: #262626;
+    color: #fff;
+    border: 1px solid #ff004f;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+    font-weight: 500;    
+}
+        
+.filter-btn:hover:not(.active-filter) {
+    background: #ff004f1a;
+}
+.filter-btn.active-filter {
+    background: #ff004f;
+    border-color: #ff004f;
+    box-shadow: 0 0 10px rgba(255, 0, 79, 0.5);
+    transform: scale(1.05);
+}
+
+        /* ================================================= */
+        /* --- STYLES FOR THE SERVICE BOXES --- */
+        /* ================================================= */
+.services-grid {
+    max-width: 1200px; 
+    margin: 50px auto; 
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; 
+    transition: all 0.5s ease-in-out;
+}
+
+.service-item-box {
+    background: #262626; 
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    /* Added max-height for a reliable transition */
+    max-height: 400px; 
+    transition: all 0.5s ease-in-out, background 0.5s, transform 0.5s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
+}
+        
+.service-item-box:hover {
+    background: #ff004f; 
+    transform: translateY(-10px); 
+}        
+/* --- FIX: Class used by JS to HIDE elements reliably --- */
+.service-item-box.hidden {
+    opacity: 0;
+    max-height: 0; /* Ensures smooth collapse */    
+    /* IMPORTANT: Override existing padding and margin to force collapse */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+
+    /* Hides overflow content during transition */
+    overflow: hidden; 
+    /* Disable interaction when hidden */
+    pointer-events: none; 
+            
+    /* Ensure transition applies to all properties */
+    transition: all 0.5s ease-in-out;
+}
+
+
+.service-icon {
+    margin-bottom: 15px;
+    color: #ff004f; 
+}
+.service-item-box:hover .service-icon {
+    color: #fff; 
+}
+.service-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+.service-item-box p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ccc;
+}
+
+/* --- OLD MyServicesList cleanup (removed unnecessary styles) --- */
+.MyServicesList{
+    display: none; 
+}
+    /* Style for the fixed footer */
+.copyright {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #262626; 
+    padding: 10px 0;
+    text-align: center;
+    z-index: 1000;
+    color: #ccc; 
+}
+.copyright p {
+    margin: 0; 
+}
+        
+        /* ================================================= */
+        /* --- CSS FOR FALLING TEXT EFFECT (Kept) --- */
+        /* ================================================= */
+
+.about-page-hero-text h1 {
+    display: flex; 
+    justify-content: center;
+    overflow: hidden; 
+}
+.about-page-hero-text h1 span {
+    display: inline-block;
+    animation: fall 1.5s ease-out forwards;
+    opacity: 0; 
+    transform: translateY(-50px); 
+    color: #ff004f; 
+}
+@keyframes fall {
+    0% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1.5);
+    }
+    30% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    }
+    80% {
+    transform: translateY(0);
+    }
+    100% {
+    opacity: 0;
+    transform: translateY(500px) rotate(30deg); 
+    }
+}
