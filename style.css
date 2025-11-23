@@ -1,3 +1,6 @@
+/* ================================================= */
+/* ---------------- 1. GLOBAL STYLES & RESET ---------------- */
+/* ================================================= */
 *{
     margin: 0;
     padding: 0;
@@ -9,25 +12,35 @@ html{
 }
 body {
     background-image: url(images/body-bg.jpg);
-    color:  #fff;
-
-}
-#header {
-    width: 100%;
-    height: 100vh;
-    background-image: url(images/background.jpg);
-    background-size: cover;
-    background-position: center;
+    color: #fff; 
+    padding-bottom: 65px; /* Space for the fixed footer */
 }
 .container{
     padding: 10px 10%;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+/* ================================================= */
+/* ---------------- 2. HEADER & NAVIGATION ---------------- */
+/* (Applies to all pages) */
+/* ================================================= */
+#header {
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/background.jpg); /* Home Page Hero Image */
+    background-size: cover;
+    background-position: center;
 }
 nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-
 }
 .logo {
     width: 350px;
@@ -56,6 +69,15 @@ nav ul li a::after{
 nav ul li a:hover::after{
     width: 100%;
 }
+/* Mobile Menu icon (hidden by default) */
+nav .fas{
+    display: none;
+}
+
+
+/* ================================================= */
+/* ---------------- 3. HOME PAGE HEADER TEXT & EFFECTS ---------------- */
+/* ================================================= */
 .header-text{
     font-size: 60px;
     margin-top: 20px;
@@ -63,52 +85,140 @@ nav ul li a:hover::after{
 .header-text h1{
     font-size: 60px;
     margin-top: 20px;
-
 }
-/* Add smooth transition to the colored text */
 .header-text h1 span {
     color: #ff004f;
     transition: text-shadow 0.3s ease-in-out;
-    display: inline-block; /* Ensures the span behaves nicely with hover */
+    display: inline-block;
 }
-
-/* Apply the glow when hovering over the span */
 .header-text h1 span:hover {
     text-shadow: 0 0 10px #ff004f, 
-                 0 0 20px #ff004f;
+                  0 0 20px #ff004f;
     cursor: pointer;
 }
-
-/* Optional: Apply the glow when hovering over the parent H1 */
-/* This makes the glow easier to trigger */
 .header-text h1:hover span {
     text-shadow: 0 0 10px #ff004f, 
-                 0 0 20px #ff004f;
+                  0 0 20px #ff004f;
 }
 
-.row{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
+
+/* ================================================= */
+/* ---------------- 4. ABOUT SECTION (index.html) ---------------- */
+/* (Legacy structure, before separate About page) */
+/* ================================================= */
 .about-col-1{
     flex-basis: 35%;
 }
 .about-col-1 img{
     width: 100%;
     border-radius: 15px;
-
 }
 .about-col-2{
     flex-basis: 60%;
 }
-
-/*-----------about------------*/
-
 #aboutPage{
     padding: 80px 0;
     color: #ababab;
 }
+
+
+/* ================================================= */
+/* ---------------- 5. ABOUT PAGE SPECIFIC STYLES (`PageForAbout.html`) ---------------- */
+/* ================================================= */
+.about-page-main {
+    padding: 100px 10%;
+    min-height: 80vh;
+}
+.about-page-main .sub-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+.about-page-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.about-page-img {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.about-page-hero-text {
+    padding: 50px 0;
+}
+.about-page-hero h1 {
+    text-align: center; 
+    font-size: 70px; 
+    color: #faf4f6;
+    margin-bottom: 10px;
+}
+.intro-paragraph {
+    text-align: center;
+    max-width: 90%; 
+    margin: 0 auto 20px auto; 
+}
+.about-page-hero-text p {
+    text-align: center;
+    color: #ff004f;
+    font-size: 80px;
+    margin-bottom: 40px;
+    transition: text-shadow 0.3s ease-in-out; 
+}
+.about-page-hero-text p:hover {
+    text-shadow: 0 0 10px #ff004f,
+                  0 0 20px #ff004f;
+    cursor: pointer;
+}
+/* About Page Hero Text Animation (falling effect) */
+.about-page-hero-text h1 {
+    display: flex; 
+    justify-content: center;
+    overflow: hidden; 
+}
+.about-page-hero-text h1 span {
+    display: inline-block;
+    animation: fall 1.5s ease-out forwards;
+    opacity: 0; 
+    transform: translateY(-50px); 
+    color: #ff004f; 
+}
+@keyframes fall {
+    0% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1.5);
+    }
+    30% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    }
+    80% {
+    transform: translateY(0);
+    }
+    100% {
+    opacity: 0;
+    transform: translateY(500px) rotate(30deg); 
+    }
+}
+@media only screen and (min-width: 768px) {
+    .about-page-content-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .about-page-img {
+        flex-basis: 40%;
+    }
+    .about-page-text {
+        flex-basis: 55%;
+    }
+}
+
+
+/* ================================================= */
+/* ---------------- 6. ABOUT PAGE TABS & TOGGLE CONTENT ---------------- */
+/* (Skills, Experience, Education) */
+/* ================================================= */
 .row-about{
     display: flex;
     justify-content: space-between;
@@ -120,10 +230,10 @@ nav ul li a:hover::after{
 .col-about-1 img{
     width: 100%;
     border-radius: 15px;
-
 }
 .col-about-2{
     flex-basis: 60%;
+    padding-left: 20px; /* Separated from flex-basis */
 }
 .about-subtitle .btn{
     background-color: #e60046;
@@ -141,7 +251,7 @@ nav ul li a:hover::after{
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
-    position: relative;    
+    position: relative; 
 }
 .tab-links::after{
     content: '';
@@ -155,87 +265,169 @@ nav ul li a:hover::after{
 }
 .tab-links.active-link::after{
     width: 50%;
-
 }
-
-/* --- About Page Toggle Content CSS --- */
-
-
-/* Ensures the toggle content is hidden by default and transitions smoothly */
-.toggle-content {
-max-height: 0;
-overflow: hidden;         
-opacity: 0;
-/* Added margin-top to separate content from button when shown */
-transition: max-height 0.7s ease-in-out, opacity 0.5s ease, margin-top 0.5s ease;
-margin-top: 0; 
-}         
-
-/* State when content is visible */
-.toggle-content.visible {
-/* Use a large value for max-height to ensure all content fits */
-max-height: 1000px; 
-opacity: 1;
-margin-top: 20px; /* Add spacing when open */
-}
-
-/* Basic container styling for reference */
-.col-about-2 {
-padding-left: 20px;
-}
-
-/* Ensure the button looks clickable */
-.btn2 {
-cursor: pointer;
-}        
-/* ================================================= */
-/* --- Tab Content Reveal Animation CSS --- */
-/* ================================================= */
-
-/* Hide all list items in tab contents initially */
 .tab-contents ul li {
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-    /* Add a smooth transition for the reveal */
-    transition: opacity 0.2s ease-out, transform 0.5s ease-out; 
+    list-style: none;
+    margin-bottom: 10px;
+    color: #ababab;
 }
-
-/* The class added by JavaScript to reveal the item */
-.tab-contents ul li.reveal-item {
-    opacity: 1;
-    transform: translateY(0); /* Move to final position */
+.tab-contents ul li span {
+    color: #ff004f;
+    font-size: 18px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
 }
-.tab-contents ul li span{
-    color: #b54769;
-    font-size: 14px;
-}
+/* Tab Content Visibility */
 .tab-contents{
     display: none;
 }
 .tab-contents.active-tab{
     display: block;
 }
+/* Tab List Item Animation */
+.tab-contents.active-tab ul li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.5s ease-out;
+}
+.tab-contents.active-tab ul li.reveal-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Toggle Content (My Journey) */
+.toggle-content {
+    max-height: 0;
+    overflow: hidden; 
+    opacity: 0;
+    transition: max-height 0.7s ease-in-out, opacity 0.5s ease, margin-top 0.5s ease;
+    margin-top: 0; 
+} 
+.toggle-content.visible {
+    max-height: 1000px; 
+    opacity: 1;
+    margin-top: 20px;
+}
+.btn2 {
+    cursor: pointer;
+} 
 
 
-/*--------------------------------services-------------*/
+/* ================================================= */
+/* ---------------- 7. SERVICES PAGE FILTER STYLES (`PageForMyServices.html`) ---------------- */
+/* ================================================= */
+.secondary-page-main {
+    /* Assuming a class for the main content wrapper on secondary pages */
+}
+.service-filters-container {
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    padding: 0 10px;
+}
+.filter-btn {
+    background: #262626;
+    color: #fff;
+    border: 1px solid #ff004f;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+    font-weight: 500; 
+}
+.filter-btn:hover:not(.active-filter) {
+    background: #ff004f1a;
+}
+.filter-btn.active-filter {
+    background: #ff004f;
+    border-color: #ff004f;
+    box-shadow: 0 0 10px rgba(255, 0, 79, 0.5);
+    transform: scale(1.05);
+}
+.services-grid {
+    max-width: 1200px; 
+    margin: 50px auto; 
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; 
+    transition: all 0.5s ease-in-out;
+}
+/* Service Box Styling */
+.service-item-box {
+    background: #262626; 
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-height: 400px; 
+    /* Changed transition time from 0.5s to 0.2s for quicker filtering feel */
+    transition: all 0.2s ease-in-out, background 0.2s, transform 0.2s; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
+}
+.service-item-box:hover {
+    background: #ff004f; 
+    transform: translateY(-10px); 
+} 
+/* Hidden State (Smooth Transition) */
+.service-item-box.hidden {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    overflow: hidden; 
+    pointer-events: none; 
+    transition: all 0.2s ease-in-out; /* MUST MATCH regular transition time */
+}
+/* Critical Fix: Completely remove from flow after transition to fill gaps */
+.service-item-box.removed {
+    display: none;
+}
+.service-icon {
+    margin-bottom: 15px;
+    color: #ff004f; 
+}
+.service-item-box:hover .service-icon {
+    color: #fff; 
+}
+.service-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+.service-item-box p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ccc;
+}
+.MyServicesList{
+    display: none; 
+}
+
+
+/* ================================================= */
+/* ---------------- 8. SERVICES SECTION (Legacy index.html Grid) ---------------- */
+/* ================================================= */
 #services{
     padding: 30px 0;
-
 }
 .services-list{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 40px;
     margin-top: 50px;
-
 }
 .services-list div{
+    border-radius: 6%;
     background: #262626;
     padding: 40px;
     font-size: 13px;
     font-weight: 300;
     border-right: 10px;
-    transition: background 1s;
+    transition: background 0.6s;
 }
 .services-list div i{
     font-size: 50px;
@@ -247,7 +439,7 @@ cursor: pointer;
     margin: 15px;
 }
 .services-list div a{
-    background-color: #d84141; /* Green */
+    background-color: #d84141;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -265,12 +457,16 @@ cursor: pointer;
 .services-list div a:hover {
     background-color: #040704;
     margin: top 30px;
-  }
+}
 .services-list div:hover{
     background: #ff004f;
     transform: translateY(-10px);
 }
-/*----------------portfolio----------*/
+
+
+/* ================================================= */
+/* ---------------- 9. PORTFOLIO SECTION ---------------- */
+/* ================================================= */
 #portfolio{
     padding: 50px 0;
 }
@@ -308,7 +504,6 @@ cursor: pointer;
     text-align: center;
     font-size: 14px;
     transition: height 0.5s;
-
 }
 .layer h3{
     font-weight: 500;
@@ -325,7 +520,6 @@ cursor: pointer;
     height: 60px;
     border-radius: 50%;
     text-align: center;
-
 }
 .work:hover img{
     transform: scale(1.1);
@@ -333,6 +527,11 @@ cursor: pointer;
 .work:hover .layer{
     height: 100%;
 }
+
+
+/* ================================================= */
+/* ---------------- 10. GENERAL BUTTONS ---------------- */
+/* ================================================= */
 .btn{
     display: block;
     margin: 50px auto;
@@ -347,7 +546,30 @@ cursor: pointer;
 .btn:hover{
     background: #ff004f;
 }
-/*----------------------contact--------------*/
+/* Enhanced Button Hover Effects */
+.btn, 
+.btn.btn2, 
+.contact-right form button[type="submit"] {
+    transition: all 0.3s ease-in-out !important;
+}
+.btn:hover, 
+.btn.btn2:hover,
+.contact-right form button[type="submit"]:hover {
+    transform: translateY(-5px) !important; 
+    box-shadow: 0 10px 20px rgba(255, 0, 79, 0.6) !important;
+}
+.btn.btn2:hover,
+.contact-right form button[type="submit"]:hover {
+    background: #e60046 !important;
+}
+.btn:hover {
+    background: #ff004f !important;
+}
+
+
+/* ================================================= */
+/* ---------------- 11. CONTACT SECTION & FORM ---------------- */
+/* ================================================= */
 .contact-left{
     flex-basis: 35%;
 }
@@ -384,16 +606,11 @@ cursor: pointer;
 .contact-right form{
     width: 100%;
 }
-/* --- New CSS for Contact Form Submit Button Hover Effect --- */
-
-/* Target the specific submit button inside the form */
 .contact-right form button[type="submit"]:hover {
-    /* Existing buttons generally change background to the theme color (#ff004f), 
-       let's make this one stand out by making it darker/lighter or changing the color. */
-    background: #e60046; /* A slightly darker red/pink */
-    transform: translateY(-2px); /* Lifts the button slightly */
-    box-shadow: 0 5px 15px rgba(255, 0, 79, 0.4); /* Adds a glowing effect */
-    transition: all 0.3s ease; /* Ensures a smooth transition */
+    background: #e60046;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 79, 0.4);
+    transition: all 0.3s ease;
 }
 form input, form textarea{
     width: 100%;
@@ -412,6 +629,19 @@ form btn2{
     margin-top: 20px;
     cursor: pointer;
 }
+#msg{
+    color: #61b752;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+/* ================================================= */
+/* ---------------- 12. FOOTER / COPYRIGHT ---------------- */
+/* ================================================= */
 .copyright {
     position: fixed;
     bottom: 0;
@@ -421,20 +651,21 @@ form btn2{
     padding: 10px 0;
     text-align: center;
     z-index: 1000;
-    color: #ccc; /* Ensures text is visible on the dark background */
+    color: #ccc;
 }
 .copyright p {
-    margin: 0; /* Remove default paragraph margin */
+    margin: 0;
 }
 .copyright i{
     color: #ff004f;
 }
-/*----------------css for small screen-----------*/
-nav .fas{
-    display: none;
-}
 
+
+/* ================================================= */
+/* ---------------- 13. MEDIA QUERIES (Mobile Responsiveness) ---------------- */
+/* ================================================= */
 @media only screen and (max-width: 600px){
+    /* Header/Hero Adjustments */
     #header{
         background-image: url(images/Phone-background.jpeg);
     }
@@ -445,6 +676,11 @@ nav .fas{
     .header-text h1{
         font-size: 30px;
     }
+    .sub-title{
+        font-size: 40px;
+    }
+    
+    /* Mobile Menu Icons */
     nav .fas{
         display: block;
         font-size: 25px;
@@ -470,12 +706,11 @@ nav .fas{
         left: 25px;
         cursor: pointer;
     }
-    .sub-title{
-        font-size: 40px;
-    }
+    
+    /* About Section Layout */
     .about-col-1 {
         flex-basis: 100%;
-    }  
+    } 
     .about-col-1 img {
         margin-bottom: 30px;
     }
@@ -486,321 +721,14 @@ nav .fas{
         font-size: 16px;
         margin-right: 20px;
     }
+    
+    /* Contact Section Layout */
     .contact-left, .contact-right{
         flex-basis: 100%;
     }
+    
+    /* Footer/Copyright */
     .copyright{
         font-size: 14px;
     }
-    }
-    #msg{
-    color: #61b752; /* A shade of green for success */
-    margin-top: 20px; /* Space it below the button */
-    display: block;
-    text-align: center; /* Center the message */
-    font-size: 1.2em;
-    font-weight: bold;
-    }
-
-==========================CSS for about menu======================
-/* These styles will ONLY apply to elements within a body that has the class 'about-page' */
-/* ==================================== */
-/* -- CSS for PageForabout.html only -- */
-/* ==================================== */
-
-/* Ensures the main content area for the dedicated About page is centered */
-.about-page-main {
-    padding: 100px 10%; /* Extra padding for spacing, especially below the header */
-    min-height: 80vh; /* Ensures the content takes up most of the viewport height */
-}
-
-/* Specific styling for the main content section's title */
-.about-page-main .sub-title {
-    text-align: center;
-    margin-bottom: 50px;
-    /* Uses existing sub-title style but forces center alignment */
-}
-
-/* Adjustments for the main content container on the dedicated page */
-.about-page-content-container {
-    display: flex;
-    flex-direction: column; /* Stacks image and text vertically by default */
-    align-items: center;
-    gap: 40px; /* Space between elements */
-}
-
-/* Image styling for the dedicated About page */
-.about-page-img {
-    max-width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow */
-}
-
-/* Text content styling for the dedicated About page */
-.about-page-hero-text {
-            /* This property centers the text inside the div */
-            
-            padding: 50px 0; /* Add some vertical padding for spacing */
-        }
-        .about-page-hero h1 {
-            /* FIX: Changed non-standard -webkit-center to standard CSS 'center' */
-            text-align: center; 
-            font-size: 70px; /* Note: I'm keeping the original 70px from our last edit */
-            color: #faf4f6;
-            margin-bottom: 10px;
-            
-        }
-        /* Style for the introductory paragraph */
-        .intro-paragraph {
-            text-align: center;
-            max-width: 90%; 
-            margin: 0 auto 20px auto; 
-        }
-
-        /* Styles for the paragraph (subtitle below the h1) - Glow Integrated */
-        .about-page-hero-text p {
-            text-align: center;
-            color: #ff004f;
-            font-size: 80px;
-            margin-bottom: 40px;
-            /* Add a smooth transition for the glow effect */
-            transition: text-shadow 0.3s ease-in-out; 
-        }
-
-        /* GLOW EFFECT ON HOVER */
-        .about-page-hero-text p:hover {
-            /* This creates the shadow/glow effect using the primary pink color (#ff004f) */
-            text-shadow: 0 0 10px #ff004f, /* Stronger shadow */
-                         0 0 20px #ff004f; /* Wider, softer shadow */
-            cursor: pointer; /* Change cursor to indicate interactivity */
-        }
-.row{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-/* Responsive adjustment for larger screens: place image and text side-by-side */
-@media only screen and (min-width: 768px) {
-    .about-page-content-container {
-        flex-direction: row; /* Horizontal layout on wider screens */
-        justify-content: space-between;
-        align-items: flex-start;
-    }
-    .about-page-img {
-        flex-basis: 40%; /* Gives the image column more space */
-    }
-    .about-page-text {
-        flex-basis: 55%; /* Gives the text column more space */
-    }
-}
-
-
-/* ================================================= */
-/* --- UNIVERSAL BUTTON HOVER FIX (Forced) --- */
-/* ================================================= */
-
-/* 1. Ensure all buttons have a smooth transition on all properties */
-.btn, 
-.btn.btn2, 
-.contact-right form button[type="submit"] {
-    transition: all 0.3s ease-in-out !important;
-}
-
-/* 2. Apply the consistent lift and shadow effect on ALL button hover states */
-.btn:hover, 
-.btn.btn2:hover,
-.contact-right form button[type="submit"]:hover {
-    /* Lifts the button up 5 pixels */
-    transform: translateY(-5px) !important; 
-    
-    /* Adds a glowing shadow in your theme color */
-    box-shadow: 0 10px 20px rgba(255, 0, 79, 0.6) !important;
-}
-
-/* 3. Re-affirm the color change for SOLID buttons */
-.btn.btn2:hover,
-.contact-right form button[type="submit"]:hover {
-    background: #e60046 !important;
-}
-
-/* 4. Re-affirm the color change for the OUTLINED 'See more' button */
-.btn:hover {
-    background: #ff004f !important;
-}
-
-
-
-/* ================================================= */
-/* --- END OF UNIVERSAL BUTTON HOVER FIX --- */     
-/* ================================================= */
-
-/* ================================================= */
-
-
-
-/* --- CSS for PageForMyServices.html only --- */
-
-/* --- FIX: Add padding to the body to create space above the fixed footer --- */
-body {
-    padding-bottom: 65px; 
-}
-
-        
-        /* --- STYLES FOR SERVICE FILTERS --- */
-        /* ================================================= */
-.service-filters-container {
-    max-width: 1200px;
-    margin: 0 auto 30px auto;
-    text-align: center;
-    padding: 0 10px;
-}
-
-.filter-btn {
-    background: #262626;
-    color: #fff;
-    border: 1px solid #ff004f;
-    padding: 8px 15px;
-    margin: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 16px;
-    font-weight: 500;    
-}
-        
-.filter-btn:hover:not(.active-filter) {
-    background: #ff004f1a;
-}
-.filter-btn.active-filter {
-    background: #ff004f;
-    border-color: #ff004f;
-    box-shadow: 0 0 10px rgba(255, 0, 79, 0.5);
-    transform: scale(1.05);
-}
-
-        /* ================================================= */
-        /* --- STYLES FOR THE SERVICE BOXES --- */
-        /* ================================================= */
-.services-grid {
-    max-width: 1200px; 
-    margin: 50px auto; 
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px; 
-    transition: all 0.5s ease-in-out;
-}
-
-.service-item-box {
-    background: #262626; 
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    /* Added max-height for a reliable transition */
-    max-height: 400px; 
-    transition: all 0.5s ease-in-out, background 0.5s, transform 0.5s;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
-}
-        
-.service-item-box:hover {
-    background: #ff004f; 
-    transform: translateY(-10px); 
-}        
-/* --- FIX: Class used by JS to HIDE elements reliably --- */
-.service-item-box.hidden {
-    opacity: 0;
-    max-height: 0; /* Ensures smooth collapse */    
-    /* IMPORTANT: Override existing padding and margin to force collapse */
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-
-    /* Hides overflow content during transition */
-    overflow: hidden; 
-    /* Disable interaction when hidden */
-    pointer-events: none; 
-            
-    /* Ensure transition applies to all properties */
-    transition: all 0.5s ease-in-out;
-}
-
-
-.service-icon {
-    margin-bottom: 15px;
-    color: #ff004f; 
-}
-.service-item-box:hover .service-icon {
-    color: #fff; 
-}
-.service-title {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #fff;
-}
-.service-item-box p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #ccc;
-}
-
-/* --- OLD MyServicesList cleanup (removed unnecessary styles) --- */
-.MyServicesList{
-    display: none; 
-}
-    /* Style for the fixed footer */
-.copyright {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #262626; 
-    padding: 10px 0;
-    text-align: center;
-    z-index: 1000;
-    color: #ccc; 
-}
-.copyright p {
-    margin: 0; 
-}
-        
-        /* ================================================= */
-        /* --- CSS FOR FALLING TEXT EFFECT (Kept) --- */
-        /* ================================================= */
-
-.about-page-hero-text h1 {
-    display: flex; 
-    justify-content: center;
-    overflow: hidden; 
-}
-.about-page-hero-text h1 span {
-    display: inline-block;
-    animation: fall 1.5s ease-out forwards;
-    opacity: 0; 
-    transform: translateY(-50px); 
-    color: #ff004f; 
-}
-@keyframes fall {
-    0% {
-    opacity: 0;
-    transform: translateY(-100px) scale(1.5);
-    }
-    30% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    }
-    80% {
-    transform: translateY(0);
-    }
-    100% {
-    opacity: 0;
-    transform: translateY(500px) rotate(30deg); 
-    }
-}
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
 }
