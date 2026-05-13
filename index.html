@@ -181,9 +181,30 @@
             <p>Copyright © Jeoben Made <i class="fa-solid fa-star"></i> Company</p>
         </div>
     </div>
+<!-- ===========================================widget chat button========= -->
+        <button class="chat-btn" id="chatBtn">
+            <i class="fa-solid fa-headset"></i>
+        </button>
 
-    <script src="MYJS.js"></script>
-    <script src="MyScriptForMenu.js"></script>
-    <script src="MyJSContentForm.js"></script>
+        <div class="chat-popup hidden" id="chatPopup">
+            <div class="chat-header">
+                <h3>Jeoben's AI Assistant</h3>
+                <button id="closeChat" style="background:none; border:none; color:white; cursor:pointer;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chatBody" class="chat-body">
+                <div class="message ai-message">Hi! I'm Jeoben's AI assistant. Ask me anything about his IT experience or projects!</div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chatInput" placeholder="Type a message...">
+                <button id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+
+        <script src="MYJS.js"></script>
+        <script src="MyScriptForMenu.js"></script>
+        <script src="MyJSContentForm.js"></script>
+        <script src="MyAI.js"></script>
 </body>
 </html>
