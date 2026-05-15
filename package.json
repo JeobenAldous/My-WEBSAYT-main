@@ -1,6 +1,7 @@
 {
   "name": "my-websayt-main",
   "version": "1.0.0",
+  "type": "module",
   "description": "Gemini API for Jeoben Cionelo CV site",
   "homepage": "https://github.com/JeobenAldous/My-WEBSAYT-main#readme",
   "bugs": {
